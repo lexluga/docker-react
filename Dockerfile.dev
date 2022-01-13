@@ -9,5 +9,5 @@ RUN mkdir /app/node_modules/.cache && chmod -R 777 /app/node_modules/.cache
 
 COPY . .
 
-CMD ["npm", "run",  "start"]
+CMD ["npm", "run", "start"]
 
