@@ -30,6 +30,8 @@ jobs:
     - run: npm run build --if-present
     - run: npm test -- --coverage 
 
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v1
   
     - name: Checkout Latest Repo
       uses: actions/checkout@master
