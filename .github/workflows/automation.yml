@@ -48,7 +48,7 @@ jobs:
         builder: ${{ steps.buildx.outputs.name }}
         push: true
         repository: ${{ secrets.DOCKERHUB_USERNAME }}/react-app 
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/react-app 
+        tags: latest, ${{ github.run_number }} 
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache 
       
