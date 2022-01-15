@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 17.x]
+        node-version: [12.x, 14.x, 16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -51,8 +51,8 @@ jobs:
         file: ./Dockerfile
         builder: ${{ steps.buildx.outputs.name }}
         push: true
-        repositor: lexluga/react-app
-        tags: latest, ${{ github.run_number}}
+        repository: lexluga/react-app
+        tags: latest, ${{ github.run_number }}
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache 
       
