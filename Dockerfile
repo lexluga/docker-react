@@ -1,4 +1,4 @@
-FROM node:current-alpine3.14 as builder
+FROM node:alpine3.15 as builder
 
 WORKDIR '/app'
 
@@ -11,6 +11,9 @@ COPY . .
 RUN npm run build 
 
 
-FROM nginx
+FROM nginx:alpine as production
 
 COPY --from=builder /app/build /usr/share/nginx/html
+
+EXPOSE 80
+
