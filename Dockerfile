@@ -15,5 +15,4 @@ FROM nginx:alpine as production
 
 COPY --from=builder /app/build /usr/share/nginx/html
 
-EXPOSE 80
 
