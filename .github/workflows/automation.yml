@@ -29,9 +29,6 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test -- --coverage 
-
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@v1
   
     - name: Checkout Latest Repo
       uses: actions/checkout@master
@@ -51,13 +48,9 @@ jobs:
       with:
         context: ./
         file: ./Dockerfile
-        builder: ${{ steps.buildx.outputs.name }}
         push: true
         repository: ${{ secrets.DOCKERHUB_USERNAME }}/react-app 
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/react-app 
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache 
-       
       
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
