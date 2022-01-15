@@ -1,6 +1,6 @@
 FROM node:alpine3.15 as build
 
-WORKDIR '/app'
+WORKDIR /app
 
 COPY package.json .
 
@@ -15,4 +15,6 @@ FROM nginx:alpine as prod
 
 COPY --from=build /app/build /usr/share/nginx/html
 
+EXPOSE 80
 
+CMD ["nginx", "-g", "daemon off;"]
