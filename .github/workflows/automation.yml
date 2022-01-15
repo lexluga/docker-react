@@ -49,8 +49,7 @@ jobs:
         context: ./
         file: ./Dockerfile
         push: true
-        repository: ${{ secrets.DOCKERHUB_USERNAME }}/react-app 
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/react-app 
+        tags: lexluga/react-app 
       
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
