@@ -1,4 +1,4 @@
-FROM node:current-alpine3.14 as build
+FROM node:thanasan/alpine_production as build
 
 WORKDIR /app
 
