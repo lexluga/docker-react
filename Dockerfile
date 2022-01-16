@@ -4,13 +4,13 @@ WORKDIR /app
 
 COPY package.json .
 
-RUN npm install
+RUN yarn cache clean && yarn --update-checksums
 
 COPY . .
 
-RUN npm start
+RUN yarn && yarn build
 
-
+# Prodcution Stage
 FROM nginx:alpine as prod
 
 COPY --from=build /app/build /usr/share/nginx/html
