@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [ 14.x ]
 
     steps:
     - name: Cache Docker layers
@@ -23,8 +23,11 @@ jobs:
         key: ${{ runner.os }}-buildx-${{ github.sha }}
         restore-keys: |
           ${{ runner.os }}-buildx-
-          
-    - uses: actions/checkout@v2
+
+   
+    - name: Check Out Repo 
+      uses: actions/checkout@v2
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
@@ -34,9 +37,6 @@ jobs:
     - run: npm run build --if-present
     - run: npm test -- --coverage 
 
-  
-    - name: Checkout Latest Repo
-      uses: actions/checkout@master
 
     - name: Set up Docker Buildx
       id: buildx
