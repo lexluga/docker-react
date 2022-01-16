@@ -6,11 +6,9 @@ COPY package.json .
 
 RUN npm install -g npm@latest
 
-RUN npm install
-
 COPY . .
 
-RUN npm run build-prod
+RUN npm run build
 
 
 # Prodcution Stage
