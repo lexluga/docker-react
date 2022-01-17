@@ -1,8 +1,9 @@
-FROM node:current-alpine3.14
+FROM node:alpine3.15
 
-WORKDIR '/app'
+WORKDIR /app
 
 COPY package.json .
+
 RUN npm install
 
 RUN mkdir /app/node_modules/.cache && chmod -R 777 /app/node_modules/.cache
