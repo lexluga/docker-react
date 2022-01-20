@@ -14,5 +14,7 @@ RUN npm run build
 # Prodcution Stage
 FROM nginx:stable-alpine as prod
 
+EXPOSE 80
+
 COPY --from=build /app/build /usr/share/nginx/html
 
