@@ -1,11 +1,9 @@
-FROM node:alpine3.15 as build
+FROM node:alpine3.15 
 
-WORKDIR /app
+WORKDIR '/app'
 
-COPY package.json .
+COPY package.json ./
 
-RUN npm install -g npm@latest
-RUN rm -rf node_modules
 RUN npm install
 
 COPY . .
@@ -14,9 +12,9 @@ RUN npm run build
 
 
 # Prodcution Stage
-FROM nginx:stable-alpine as prod
+FROM nginx:stable-alpine 
 
 EXPOSE 80
 
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=0 /app/build /usr/share/nginx/html
 
