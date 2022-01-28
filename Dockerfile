@@ -12,7 +12,7 @@ RUN npm run build
 
 
 # Prodcution Stage
-FROM nginx:stable-alpine 
+FROM nginx:alpine
 
 EXPOSE 80
 
