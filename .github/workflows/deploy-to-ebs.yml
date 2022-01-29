@@ -20,7 +20,7 @@ jobs:
       run: zip -r deploy.zip * -x "**node_modules**"
     
     
-    - name: Get Timestamp
+    - name: Get Currenta Timestamp
       uses: gerred/actions/current-time@master
       id: current-time
 
