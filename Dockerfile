@@ -12,9 +12,7 @@ RUN npm run build
 
 
 # Production Stage
-FROM nginx
-
-EXPOSE 80
+FROM nginx:stable-alpine
 
 COPY --from=0 /app/build /usr/share/nginx/html
 
