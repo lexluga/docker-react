@@ -1,6 +1,6 @@
 FROM node:alpine3.15 
 
-WORKDIR '/app'
+WORKDIR /app
 
 COPY package.json ./
 
@@ -11,8 +11,12 @@ COPY . .
 RUN npm run build
 
 
-# Prodcution Stage
+# Production Stage
 FROM nginx
 
+EXPOSE 80
+
 COPY --from=0 /app/build /usr/share/nginx/html
+
+
 
