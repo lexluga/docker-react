@@ -11,17 +11,14 @@ jobs:
   deploy:
 
     runs-on: ubuntu-latest
-
+    
     steps:
-
     - name: Checkout Latest Repo
     - uses: actions/checkout@v2
-      with:
-        lfs: 'true'
-  
+     
     - name: Generate Deployment Package
       run: zip -r deploy.zip * -x "**node_modules**"
-
+    
     - name: Get Timestamp
       uses: gerred/actions/current-time@master
       id: current-time
