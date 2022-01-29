@@ -15,6 +15,10 @@ jobs:
     steps:
     - name: Checkout Latest Repo
       uses: actions/checkout@v2
+
+    - name: Generate Deployment Package
+      run: zip -r deploy.zip * -x "**node_modules**"
+    
     
     - name: Get Current Timestamp
       uses: gerred/actions/current-time@master
@@ -38,6 +42,6 @@ jobs:
         environment_name: Dockerreact-env
         version_label: "docker-app-${{ steps.format-time.outputs.replaced }}"
         region: us-east-2
-        
+        deployment_package: deploy.zip
      
 
