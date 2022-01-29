@@ -8,18 +8,17 @@ on:
   
 
 jobs:
-  build:
-
+  deploy:
     runs-on: ubuntu-latest
     
     steps:
+    - name: Checkout Latest Repo
     - uses: actions/checkout@v2
       with:
         lfs: 'true'
-    
-    - name: Set up Docker Buildx
-      id: buildx
-      uses: docker/setup-buildx-action@v1
+
+    - name: Generate Deployment Package
+      run: zip -r deploy.zip * -x "**node_modules**"
 
     - name: Get Timestamp
       uses: gerred/actions/current-time@master
@@ -33,9 +32,6 @@ jobs:
         string: "${{ steps.current-time.outputs.time }}"
         replace-with: '-'
         flags: 'g'
-
-    - name: Generate Deployment Package
-      run: zip -r deploy.zip * -x "**node_modules**"
 
     - name: Deploy to EB
       uses: einaregilsson/beanstalk-deploy@v20
