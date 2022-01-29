@@ -20,7 +20,7 @@ jobs:
       run: zip -r deploy.zip * -x "**node_modules**"
     
     
-    - name: Get Currenta Timestamp
+    - name: Get Current Timestamp
       uses: gerred/actions/current-time@master
       id: current-time
 
@@ -39,7 +39,7 @@ jobs:
         aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         application_name: docker-react
-        environment_name: Dockerreact-env
+        environment_name: Dockerreact-env-1
         version_label: "docker-app-${{ steps.format-time.outputs.replaced }}"
         region: us-east-2
         deployment_package: deploy.zip
