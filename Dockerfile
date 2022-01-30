@@ -1,8 +1,8 @@
 FROM node:alpine3.15 
 
-WORKDIR /app
+WORKDIR '/app'
 
-COPY package.json ./
+COPY package.json .
 
 RUN npm install
 
@@ -12,9 +12,10 @@ RUN npm run build
 
 
 # Production Stage
-FROM nginx:stable-alpine
+FROM nginx
 
 COPY --from=0 /app/build /usr/share/nginx/html
 
+EXPOSE 80
 
 
