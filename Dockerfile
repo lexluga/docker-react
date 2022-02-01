@@ -2,11 +2,11 @@ FROM node:alpine3.15
 
 WORKDIR /app
 
-COPY package.json .
+COPY package*.json ./
 
 RUN npm install
 
-COPY . /app
+COPY . .
 
 RUN npm run build
 
@@ -16,6 +16,5 @@ FROM nginx
 
 COPY --from=0 /app/build /usr/share/nginx/html
 
-EXPOSE 80
 
 
