@@ -1,8 +1,8 @@
-FROM node:alpine3.15 
+FROM node:alpine3.15
 
-WORKDIR '/app'
+WORKDIR /app
 
-COPY package.json ./
+COPY package.json .
 
 RUN npm install 
 
